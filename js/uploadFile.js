@@ -23,12 +23,12 @@
     var uploadFile = function (options, fun, obj) {
         //插件代码
     	options = jQuery.extend({},{
-		//可在组件中配置上传处理地址，以便整个项目共用
-    		path : "http://***/upload",
+    		path : "",//引用时可写入自己的服务处理地址
     		maxSize: "100mb",
     		allowFileType:"exe,zip,rar,gif,jpeg,jpg,png,avi,mp3,txt,swf,rm,3gp,mp4,wma,wav,rmvb,ram,psd," +
     				"pdf,doc,mdb,xls,ppt,docx,pptx,txt,wps,iso,wmv,flv,fla,swf",
-    		allowFileNum : 1
+    		allowFileNum : 1,
+                icoPath:{succed:'../images/succed.png',fail:'../images/fail.png'}
     	},options);
 		//内置转化文件大小方法
     	var getSize=function(size){
@@ -63,8 +63,8 @@
 			file_data_name : "file",
 			url : options.path,
 			multi_selection : (options.allowFileNum==1?false:true),
-			flash_swf_url : basePath+'comm/js/JCrop/js/Moxie.swf',
-			silverlight_xap_url : basePath+'comm/js/JCrop/js/Moxie.xap',
+			flash_swf_url : 'js/Moxie.swf',//需要修改
+			silverlight_xap_url : 'js/Moxie.xap',//需要修改
 			
 			filters : {
 				max_file_size : options.maxSize,
@@ -96,7 +96,7 @@
 					for(i=0;i<num;i++){
 						str+="<li id='"+files[i].id+"' class='filelist'><span class='title'>"+files[i].name+"</span><span class='size'>"
 							+getSize(files[i].size)+"</span><span class='percent'>0%</span><img class='overico' style='display:none'"
-							+" src='/wukong-web/comm/images/success.png' /><div class='progress'>"+
+							+" src='"+options.icoPath.succed+"' /><div class='progress'>"+
 							"<span class='complete'></span></div></li>";
 					}
 					uploader.start();
@@ -154,7 +154,7 @@
 							failMess="出错了，请稍后再试！";
 					}
 					var str="<li id='"+err.file.id+"' class='filelist'><span class='title'>"+err.file.name+"</span><span class='size'>"
-						+getSize(err.file.size)+"</span><img class='overico' src='/wukong-web/comm/images/fail.png' /><div class='failmess'>"+
+						+getSize(err.file.size)+"</span><img class='overico' src='"+options.icoPath.fail+"' /><div class='failmess'>"+
 						failMess+"</div></li>";
 					if($("#uploadfilepanel").length==0){
 						$("body").append("<div id='uploadfilepanel'><ul class='modalpanel'></ul></div>").css("overflow","hidden");
