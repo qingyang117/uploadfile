@@ -2,7 +2,7 @@
 基于plupload封装的上传文件插件
 需要调用jQuery和plupload
 支持H5的浏览器相对比较完美，IE89采用silverlight方式上传，会报插件提示，做了对象重新实例化处理，忽略插件提示即可！
-
+![image](https://github.com/qingyang117/uploadfile/images/demo.png)
 
 /**
  * 上传文件
