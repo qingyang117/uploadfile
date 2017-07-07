@@ -23,7 +23,8 @@
     var uploadFile = function (options, fun, obj) {
         //插件代码
     	options = jQuery.extend({},{
-    		path : "http://124.193.175.245/lyfile/upload",
+		//可在组件中配置上传处理地址，以便整个项目共用
+    		path : "http://***/upload",
     		maxSize: "100mb",
     		allowFileType:"exe,zip,rar,gif,jpeg,jpg,png,avi,mp3,txt,swf,rm,3gp,mp4,wma,wav,rmvb,ram,psd," +
     				"pdf,doc,mdb,xls,ppt,docx,pptx,txt,wps,iso,wmv,flv,fla,swf",
